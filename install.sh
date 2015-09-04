@@ -5,7 +5,7 @@ set -e
 d=$(dirname $0)
 ed=~/.emacs.d
 
-mkdir -p "${ed}/init-lisp"
+mkdir -p "${ed}/init-lisp" ~/emacs
 
 for f in init.el init-lisp/load-directory.el
 do
@@ -31,4 +31,3 @@ do
 		echo "${ed}/init.el is going to be ignored unless you remove/rename ${f}"
 	fi
 done
-
