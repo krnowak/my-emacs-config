@@ -7,13 +7,14 @@ ed=~/.emacs.d
 
 mkdir -p "${ed}/init-lisp" ~/emacs
 
-for f in init.el init-lisp/load-directory.el
+for f in init.el
 do
 	o="${ed}/${f}"
 	n="${d}/$(basename "${f}")"
+	mkdir -p "$(dirname "${n}")"
 	if test -e "${o}"
 	then
-		if cmp --silent "${o}" "${n}"
+		if ! cmp --silent "${o}" "${n}"
 		then
 			mv "${o}" "${o}.old"
 		fi

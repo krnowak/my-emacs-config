@@ -27,16 +27,17 @@
  ;; If there is more than one, they won't work right.
  )
 
-(defmacro with-library (symbol &rest body)
-      `(condition-case nil
-           (progn
-             (require ',symbol)
-             ,@body)
+(defun load-directory (directory)
+  "Load recursively all `.el' files in DIRECTORY."
+  (dolist (element (directory-files-and-attributes directory nil nil nil))
+    (let* ((path (car element))
+	   (fullpath (concat directory "/" path))
+	   (isdir (car (cdr element)))
+	   (ignore-dir (or (string= path ".") (string= path ".."))))
+      (cond
+       ((and (eq isdir t) (not ignore-dir))
+	(load-directory fullpath))
+       ((and (eq isdir nil) (string= (substring path -3) ".el"))
+	        (load (file-name-sans-extension fullpath)))))))
 
-         (error (message (format "I guess we don't have %s available." ',symbol))
-                nil)))
-    (put 'with-library 'lisp-indent-function 1)
-
-(load-file "~/.emacs.d/init-lisp/load-directory.el")
-(with-library load-directory
-  (load-directory "~/emacs"))
+(load-directory "~/emacs")
