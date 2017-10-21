@@ -38,7 +38,7 @@
      (c-file-offsets
       (innamespace . 0))))))
 
-(defvar my-packages '(better-defaults whitespace))
+(defvar my-packages '(better-defaults go-mode rust-mode))
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
