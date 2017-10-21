@@ -14,8 +14,7 @@
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")
-     ("marmalade" . "https://marmalade-repo.org/packages/"))))
+     ("melpa" . "https://melpa.org/packages/"))))
  '(safe-local-variable-values
    (quote
     ((js2-basic-offset . 4)
