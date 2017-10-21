@@ -38,10 +38,18 @@
      (c-file-offsets
       (innamespace . 0))))))
 
-(defvar my-packages '(better-defaults go-mode rust-mode))
+(setq my-packages '(better-defaults go-mode rust-mode))
+(setq my-packages-to-install '())
 (dolist (p my-packages)
   (when (not (package-installed-p p))
-    (package-install p)))
+    (push p my-packages-to-install)))
+
+(if (not (equal (car my-packages-to-install) nil))
+    (progn
+      (package-refresh-contents)
+      (dolist (p my-packages-to-install)
+	(package-install p)))
+  nil)
 
 (setq line-number-mode 1)
 (setq column-number-mode 1)
