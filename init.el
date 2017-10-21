@@ -20,7 +20,7 @@
  '(safe-local-variable-values
    (quote
     ((js2-basic-offset . 4)
-    ((c-file-offsets
+     (c-file-offsets
       (innamespace . 0)
       (substatement-open . 0)
       (brace-list-open . 0))
