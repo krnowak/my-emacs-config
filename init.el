@@ -9,15 +9,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-enabled-themes '(deeper-blue))
  '(font-use-system-font t)
  '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
+ '(package-selected-packages
+   '(modern-cpp-font-lock groovy-mode rust-mode go-mode flymake-rust flymake-go better-defaults))
  '(safe-local-variable-values
-   (quote
-    ((js2-basic-offset . 4)
+   '((js2-basic-offset . 4)
      (c-file-offsets
       (innamespace . 0)
       (substatement-open . 0)
@@ -26,19 +26,13 @@
       (innamespace . 0)
       (substatement-open . 0))
      (eval progn
-           (c-set-offset
-            (quote innamespace)
-            (quote 0))
-           (c-set-offset
-            (quote inline-open)
-            (quote 0)))
-     (c-set-offset
-      (quote innamespace)
-      0)
+           (c-set-offset 'innamespace '0)
+           (c-set-offset 'inline-open '0))
+     (c-set-offset 'innamespace 0)
      (c-file-offsets
-      (innamespace . 0))))))
+      (innamespace . 0)))))
 
-(setq my-packages '(better-defaults go-mode rust-mode))
+(setq my-packages '(flymake-go flymake-rust better-defaults go-mode rust-mode))
 (setq my-packages-to-install '())
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -76,3 +70,11 @@
 (if (file-directory-p "~/emacs")
     (load-directory "~/emacs"))
 (require 'better-defaults)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
