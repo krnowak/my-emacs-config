@@ -77,7 +77,7 @@
                    (gomod . ("https://github.com/camdencheek/tree-sitter-go-mod" "v1.1.0"))
                    (make . ("https://github.com/tree-sitter-grammars/tree-sitter-make" "v1.1.1"))
                    (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.24.0"))
-                   (odin . ("https://github.com/tree-sitter-grammars/tree-sitter-odin" "v1.3.0"))))
+                   (odin . ("https://github.com/krnowak/tree-sitter-odin" "krnowak/proc-body-field"))))
   (add-to-list 'treesit-language-source-alist grammar)
   (unless (treesit-language-available-p (car grammar))
     (treesit-install-language-grammar (car grammar))))
