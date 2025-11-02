@@ -2,6 +2,13 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
+;; kill messages, started popping up by itself suddenly
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+;; make scratch buffer empty
+(setq initial-scratch-message "")
+
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
