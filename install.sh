@@ -150,8 +150,28 @@ for line in "${lines[@]}"; do
         failed_langs[${lang}]="tree-sitter generate failed for ${lang}"
         continue
     fi
-    if ! call make; then
-        failed_langs[${lang}]="make failed for ${lang}"
+    if [[ -n ${dry_run} ]]; then
+        version=made-up.version.number
+        so_major=made-up-so-major
+    else
+        version=$(call jq -r .version package.json)
+        so_major=$(sed -n 's/\#define LANGUAGE_VERSION //p' src/parser.c)
+    fi
+    so_minor=${version%%.*}
+    objs=( src/parser.o )
+    if ! call cc -Isrc -std=c11 -fPIC -c -o src/parser.o src/parser.c; then
+        failed_langs[${lang}]="cc src/parser.cc failed"
+        continue
+    fi
+    if [[ -e src/scanner.c ]]; then
+        objs+=( src/scanner.o )
+        if ! call cc -Isrc -std=c11 -fPIC -c -o src/scanner.o src/scanner.c; then
+            failed_langs[${lang}]="cc src/scanner.c failed"
+            continue
+        fi
+    fi
+    if ! call cc -shared "-Wl,-soname,libtree-sitter-${lang}.so.${so_major}.${so_minor}" "${objs[@]}" -o "libtree-sitter-${lang}.so"; then
+        failed_langs[${lang}]="linking shared lib failed"
         continue
     fi
     call cp -a "libtree-sitter-${lang}.so" "${HOME}/.emacs.d/tree-sitter/libtree-sitter-${lang}.so"
