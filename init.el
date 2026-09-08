@@ -75,20 +75,24 @@
   :ensure t)
 
 (require 'treesit)
-(dolist (grammar '((bash . ("https://github.com/tree-sitter/tree-sitter-bash" "v0.25.0"))
-                   (c . ("https://github.com/tree-sitter/tree-sitter-c" "v0.24.1"))
-                   (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp" "v0.23.4"))
-                   (elisp . ("https://github.com/Wilfred/tree-sitter-elisp" "1.6.1"))
-                   (glsl . ("https://github.com/tree-sitter-grammars/tree-sitter-glsl" "v0.2.0"))
-                   (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.25.0"))
-                   (gomod . ("https://github.com/camdencheek/tree-sitter-go-mod" "v1.1.0"))
-                   (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.25.0"))
-                   (make . ("https://github.com/tree-sitter-grammars/tree-sitter-make" "v1.1.1"))
-                   (odin . ("https://github.com/krnowak/tree-sitter-odin" "krnowak/proc-body-field"))
-                   (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.24.0"))))
-  (add-to-list 'treesit-language-source-alist grammar)
-  (unless (treesit-language-available-p (car grammar))
-    (treesit-install-language-grammar (car grammar))))
+;;(dolist (grammar '(
+;;                   ;; GRAMMARS BEGIN
+;;                   (bash . ("https://github.com/tree-sitter/tree-sitter-bash" "v0.25.1")) ;;
+;;                   (c . ("https://github.com/tree-sitter/tree-sitter-c" "v0.24.2")) ;;
+;;                   (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp" "8b5b49eb196bec7040441bee33b2c9a4838d6967")) ;; c
+;;                   (elisp . ("https://github.com/Wilfred/tree-sitter-elisp" "1.7.2")) ;;
+;;                   (glsl . ("https://github.com/tree-sitter-grammars/tree-sitter-glsl" "v0.2.0")) ;; c
+;;                   (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.25.0")) ;;
+;;                   (gomod . ("https://github.com/camdencheek/tree-sitter-go-mod" "2e886870578eeba1927a2dc4bd2e2b3f598c5f9a")) ;;
+;;                   (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.25.0")) ;;
+;;                   (make . ("https://github.com/tree-sitter-grammars/tree-sitter-make" "70613f3d812cbabbd7f38d104d60a409c4008b43")) ;;
+;;                   (odin . ("https://github.com/krnowak/tree-sitter-odin" "krnowak/proc-body-field")) ;;
+;;                   (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.24.2")) ;;
+;;                   ;; GRAMMARS END
+;;                   ))
+;;  (add-to-list 'treesit-language-source-alist grammar)
+;;  (unless (treesit-language-available-p (car grammar))
+;;    (treesit-install-language-grammar (car grammar))))
 (dolist (mapping '((c-mode . c-ts-mode)
                    (c++-mode . c++-ts-mode)
                    (c-or-c++-mode . c-or-c++-ts-mode)
