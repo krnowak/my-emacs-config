@@ -73,6 +73,8 @@
   :mode "\\.odin\\'")
 (use-package rust-mode
   :ensure t)
+(use-package yaml-mode
+  :ensure t)
 
 (require 'treesit)
 ;;(dolist (grammar '(
@@ -88,6 +90,7 @@
 ;;                   (make . ("https://github.com/tree-sitter-grammars/tree-sitter-make" "70613f3d812cbabbd7f38d104d60a409c4008b43")) ;;
 ;;                   (odin . ("https://github.com/krnowak/tree-sitter-odin" "krnowak/proc-body-field")) ;;
 ;;                   (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.24.2")) ;;
+;;                   (yaml . ("https://github.com/tree-sitter-grammars/tree-sitter-yaml" "v0.7.2")) ;;
 ;;                   ;; GRAMMARS END
 ;;                   ))
 ;;  (add-to-list 'treesit-language-source-alist grammar)
@@ -106,5 +109,6 @@
                    (js2-mode . js-ts-mode)
                    (makefile-mode . makefile-ts-mode)
                    (rust-mode . rust-ts-mode)
-                   (sh-mode . bash-ts-mode)))
+                   (sh-mode . bash-ts-mode)
+                   (yaml-mode . yaml-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
